@@ -109,13 +109,103 @@
                         </div>
                     </div>
                     <div class="game-display">
-<!--                         <img src="images/portada.png" alt=""> -->
+                        <div id="game-preview">
+                            <h1>¡Elije tu personaje!</h1>
+                            <div class="players-selection">
+                                <div class="player1-select">
+                                    <h2>Jugador 1</h2>
+                                    <div><img src="" alt=""></div>
+                                </div>
+                                <div class="player2-select">
+                                    <h2>Jugador 2</h2>
+                                    <div><img src="" alt=""></div>
+                                </div>
+                            </div>
+                            <div class="character-selection">
+                                <div class="character-selection-p1">
+                                    <div class="character-container">
+                                        <input type="checkbox" id="checkbox-1" class="checkbox">
+                                        <div class="checkbox-img">
+                                            <img src="images/dog-chiquito.png" alt="dog-checkbox" id="checkbox-1-img">
+                                        </div>
+                                    </div>
+                                    <div class="character-container">
+                                        <input type="checkbox" id="checkbox-2" class="checkbox">
+                                        <div class="checkbox-img">
+                                            <img src="images/duck-chiquito.png" alt="duck-checkbox" id="checkbox-2-img">
+                                        </div>
+                                    </div>
+                                    <div class="character-container">
+                                        <input type="checkbox" id="checkbox-3" class="checkbox">
+                                        <div class="checkbox-img">
+                                            <img src="images/hunter1-chiquito.png" alt="hunter1-checkbox"
+                                                id="checkbox-3-img">
+                                        </div>
+                                    </div>
+                                    <div class="character-container">
+                                        <input type="checkbox" id="checkbox-4" class="checkbox">
+                                        <div class="checkbox-img">
+                                            <img src="images/hunter2-chiquito.png" alt="hunter2-checkbox"
+                                                id="checkbox-4-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="character-selection-p2">
+                                    <div class="character-container">
+                                        <input type="checkbox" id="checkbox-1" class="checkbox">
+                                        <div class="checkbox-img">
+                                            <img src="images/dog-chiquito.png" alt="dog-checkbox" id="checkbox-1-img">
+                                        </div>
+                                    </div>
+                                    <div class="character-container">
+                                        <input type="checkbox" id="checkbox-2" class="checkbox">
+                                        <div class="checkbox-img">
+                                            <img src="images/duck-chiquito.png" alt="duck-checkbox" id="checkbox-2-img">
+                                        </div>
+                                    </div>
+                                    <div class="character-container">
+                                        <input type="checkbox" id="checkbox-3" class="checkbox">
+                                        <div class="checkbox-img">
+                                            <img src="images/hunter1-chiquito.png" alt="hunter1-checkbox"
+                                                id="checkbox-3-img">
+                                        </div>
+                                    </div>
+                                    <div class="character-container">
+                                        <input type="checkbox" id="checkbox-4" class="checkbox">
+                                        <div class="checkbox-img">
+                                            <img src="images/hunter2-chiquito.png" alt="hunter2-checkbox"
+                                                id="checkbox-4-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-selection">
+                                <select id="game-type">
+                                    <option value="4">4 en línea</option>
+                                    <option value="5">5 en línea</option>
+                                    <option value="6">6 en línea</option>
+                                    <option value="7">7 en línea</option>
+                                </select>
+                            </div>
+                            <div class="play-btn">
+                                <button id="play">Jugar</button>
+                            </div>
+                        </div>
+                        <div id="victory-screen" style="display: none;">
+                            <h1 id="game-result">¡Ganaste!</h1>
+                            <p id="winner">¡Felicidades </p>
+                            <!-- <p id="time-elapsed">Tiempo de juego:</p> -->
+                            <button id="play-again">Jugar de Nuevo</button>
+                            <button id="go-to-menu">Menú Inicial</button>
+                        </div>
+                        <div id="countdown-timer" style="display: none;">05:00</div>
                         <img src="images/gameboard3.png" alt="" id="imagen" style="display: none;">
                         <img src="images/lateralbackground.png" alt="" id="imagen" style="display: none;">
                         <img src="images/arrow-down.png" alt="" id="arrow-down" style="display: none;">
                         <img src="images/dog.png" alt="" id="chip-dog" style="display: none;">
                         <img src="images/duck.png" alt="" id="chip-duck" style="display: none;">
-                        <canvas id="myCanvas" width="1144" height="700" style="border:2px solid black"></canvas>
+                        <canvas id="myCanvas" width="1144" height="700"
+                            style="border:2px solid black; display: none;"></canvas>
                     </div>
                     <div class="bottom-bar">
                         <p>Duck vs Dog</p>

@@ -854,7 +854,87 @@ div .reset-password {
     color: var(--secundario-l1);
 }
 /* CORREGIR pseudo-clases cuando no ingresa bien el input el usuario */
-/* agregar hover a los botones de incio  */
+
+#game-preview {
+    height: 100%;
+}
+
+#game-preview h1 {
+    display: flex;
+    justify-content: center;
+    margin: 3%;
+    color: black;
+}
+
+.players-selection {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+div.character-selection {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2%;
+}
+
+.character-selection-p1, .character-selection-p2 {
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 2px;
+}
+
+
+.character-container > input {
+    position:absolute;
+    height: 100px;
+    width:100px;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+
+.character-container .checkbox-img{
+    border: 2px solid #547f4c;
+    border-radius: 8px;
+    transition: all 300ms ease;
+}
+
+input:checked + div.checkbox-img {
+    background-color: #abe44c;
+    /* box-shadow: 2px 2px 2px 1px black; */
+}
+/* 
+input:hover + div.checkbox-img{
+    box-shadow: 0 0 12px green;
+} */
+
+
+.board-selection {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.board-selection select{
+    background-color: DodgerBlue;
+    font-size: 20px;
+    width: 20%;
+    padding: 10px;
+}
+
+.play-btn {
+    display: flex;
+    justify-content: center;
+    margin: 3%;
+}
+
+.play-btn button {
+    height:50px;
+    width: 100px;
+    background-color: blue;
+    border: none;
+}
+
 .game-content {
     height: 90%;
     display: grid;
@@ -946,9 +1026,48 @@ div .reset-password {
 }
 
 .game-display {
-    background-color:#F8F4FF;
+    background-image: url('../images/start-background.png');
+    background-repeat: no-repeat;
     min-height: 700px;
     overflow-y: hidden;
+}
+
+#victory-screen {
+    /*background: url('tu-imagen-de-fondo.png'); /* Puedes utilizar una imagen de fondo aquí */
+    background-color: rgba(79, 94, 117, 0.8); /* primario-l1*/
+    border-radius: 20px;
+    position: absolute;
+    z-index: 1;
+    background-size: cover;
+    text-align: center;
+    padding: 20px;
+    color: var(--acento);
+    font-family: 'Press Start 2P', cursive;
+}
+
+#victory-screen h1 {
+    font-size: 36px;
+}
+
+#victory-screen button {
+    background-color: var(--secundario-l1); /* Estiliza el botón a tu gusto */
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+#countdown-timer{
+    padding-top: 0.5rem;
+    position: absolute;
+    background-color: transparent;
+    text-align: right;
+    z-index: 0;
+    color: var(--blanco);
+    font-size: var(--body);
+    user-select: none;
 }
 
 .description-section{

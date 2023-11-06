@@ -11,21 +11,115 @@ background.src = './images/gameboard3.png';
 let gameBackground = new Image();
 gameBackground.src = './images/lateralbackground.png';
 
-let rows=6;
-let columns=7;
-
-let board = new Board(rows,columns,0,canvasHeight-boardHeigth,boardWidth,boardHeigth,background,ctx);
-board.initialize();
-
 let player1 = new Player("pepe");
 let player2 = new Player("moni");
 
-let game = new Game(player1,player2,board,rows*columns/2,canvasWidth,canvasHeight,gameBackground,ctx);
-game.draw();
-
-
 let isMouseDown = false;
 let lastClickedFigure = null;
+let board="";
+let game="";
+
+setVariables();
+
+function setVariables() {
+    const checkboxesPlayer1 = document.querySelectorAll('.character-selection-p1 .checkbox');
+    const checkboxesPlayer2 = document.querySelectorAll('.character-selection-p2 .checkbox');
+    checkboxesPlayer1.forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            checkboxesPlayer1.forEach(cb => {
+                if (cb !== this) {
+                    cb.checked = false;
+                }
+            });
+            disableCheckboxesForPlayer2(this.id);
+        });
+    });
+
+    checkboxesPlayer2.forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            checkboxesPlayer2.forEach(cb => {
+                if (cb !== this) {
+                    cb.checked = false;
+                }
+            });
+            disableCheckboxesForPlayer1(this.id);
+        });
+    });
+}
+
+function disableCheckboxesForPlayer2(checkboxId) {
+        const checkboxesPlayer2 = document.querySelectorAll('.character-selection-p2 .checkbox');
+        checkboxesPlayer2.forEach(checkbox => {
+            if (checkbox.id === checkboxId) {
+                checkbox.disabled = true;
+            } else {
+                checkbox.disabled = false;
+            }
+        });
+    }
+
+    function disableCheckboxesForPlayer1(checkboxId) {
+        const checkboxesPlayer1 = document.querySelectorAll('.character-selection-p1 .checkbox');
+        checkboxesPlayer1.forEach(checkbox => {
+            if (checkbox.id === checkboxId) {
+                checkbox.disabled = true;
+            } else {
+                checkbox.disabled = false;
+            }
+        });
+    }
+
+let replayButton = document.querySelector("#play-again");
+replayButton.addEventListener("click",function(){
+    let victoryDiv = document.querySelector("#victory-screen");
+    victoryDiv.style.display="none";
+    game.reset();
+})
+
+let playButton = document.querySelector("#play");
+playButton.addEventListener("click", function(){
+    let connectAmmount= document.querySelector("#game-type");
+
+    let rows=parseInt(connectAmmount.value)+2;
+    let columns=parseInt(connectAmmount.value)+3;
+    let bothSelected= 0;
+    
+    board = new Board(rows,columns,0,canvasHeight-boardHeigth,boardWidth,boardHeigth,background,ctx);
+    board.initialize();
+
+    const checkboxesPlayer1 = document.querySelectorAll('.character-selection-p1 .checkbox');
+    let img1 = ""; // Variable para almacenar la imagen seleccionada por el jugador 1
+
+    checkboxesPlayer1.forEach(checkbox => {
+            if (checkbox.checked) {
+                let value = document.querySelector("#"+checkbox.id+"-img");
+                img1 = value; // Almacena la imagen seleccionada por el jugador 1
+                bothSelected+=1;
+            }
+    });
+
+    const checkboxesPlayer2 = document.querySelectorAll('.character-selection-p2 .checkbox');
+    let img2 = ""; // Variable para almacenar la imagen seleccionada por el jugador 2
+
+    checkboxesPlayer2.forEach(checkbox => {
+            if (checkbox.checked) {
+                let value = document.querySelector("#"+checkbox.id+"-img");
+                img2 = value; // Almacena la imagen seleccionada por el jugador 2
+                bothSelected+=1;
+            }
+    });
+
+    let gamePreview = document.querySelector("#game-preview");
+
+    if(bothSelected===2){
+        gamePreview.style.display= "none";
+        canvas.style.display="block";
+        game = new Game(player1, player2, board, rows * columns / 2, canvasWidth, canvasHeight, gameBackground, img1, img2, ctx);
+        game.draw();
+        let timer= document.querySelector("#countdown-timer");
+        timer.style.display= "block"
+    }
+});
 
 function onMouseDown(e){
     let rect = e.target.getBoundingClientRect();
@@ -67,7 +161,7 @@ function onMouseMove(e){
     let y = e.clientY - rect.top;
     if(isMouseDown && lastClickedFigure!=null){
         lastClickedFigure.setPosition(x,y);
-        game.draw();
+        game.draw(lastClickedFigure);
     }
 }
 

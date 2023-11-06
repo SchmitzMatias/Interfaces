@@ -12,7 +12,7 @@ class Board {
         this.width = width;
         this.ctx = context;
         this.background=background;
-        this.minToWin=4; //TODO cambiar esto a valor variable.
+        this.minToWin=rows-2;
     }
 
     getWidth(){
