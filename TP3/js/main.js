@@ -11,11 +11,11 @@ background.src = './images/gameboard3.png';
 let gameBackground = new Image();
 gameBackground.src = './images/lateralbackground.png';
 
-let player1 = new Player("pepe");
-let player2 = new Player("moni");
+let player1 = new Player("Jugador 1");
+let player2 = new Player("Jugador 2");
 
 let isMouseDown = false;
-let lastClickedFigure = null;
+let lastClickedChip = null;
 let board="";
 let game="";
 
@@ -76,6 +76,11 @@ replayButton.addEventListener("click",function(){
     game.reset();
 })
 
+let landingButton = document.querySelector("#landing");
+landingButton.addEventListener("click",function(){
+    location.reload();
+})
+
 let playButton = document.querySelector("#play");
 playButton.addEventListener("click", function(){
     let connectAmmount= document.querySelector("#game-type");
@@ -128,15 +133,15 @@ function onMouseDown(e){
 
     isMouseDown = true;
 
-    if(lastClickedFigure !=null){
-        lastClickedFigure.setResaltado(false);
-        lastClickedFigure = null;
+    if(lastClickedChip !=null){
+        lastClickedChip.setResaltado(false);
+        lastClickedChip = null;
     }
-    let clickFig = findClickedFigure(x,y);
+    let clickFig = findClickedChip(x,y);
     if (clickFig!=null){
         if(game.checkTurn(clickFig)){
             clickFig.setResaltado("#483100");
-            lastClickedFigure = clickFig;
+            lastClickedChip = clickFig;
             clickFig.setPreviousX(clickFig.getPosX());
             clickFig.setPreviousY(clickFig.getPosY());
             clickFig.draw();
@@ -147,9 +152,9 @@ function onMouseDown(e){
 
 function onMouseUp(e){
     isMouseDown = false;
-    if(lastClickedFigure!=null){
-        if(game.checkPlay(lastClickedFigure)){
-            lastClickedFigure=null; //NOTA: ya se agregó al tablero, entonces "vacio" ultima, sino: bug
+    if(lastClickedChip!=null){
+        if(game.checkPlay(lastClickedChip)){
+            lastClickedChip=null; //NOTA: ya se agregó al tablero, entonces "vacio" ultima, sino: bug
         }
     }
 }
@@ -159,9 +164,9 @@ function onMouseMove(e){
     let rect = e.target.getBoundingClientRect();
     let x = e.clientX - rect.left;
     let y = e.clientY - rect.top;
-    if(isMouseDown && lastClickedFigure!=null){
-        lastClickedFigure.setPosition(x,y);
-        game.draw(lastClickedFigure);
+    if(isMouseDown && lastClickedChip!=null){
+        lastClickedChip.setPosition(x,y);
+        game.draw(lastClickedChip);
     }
 }
 
@@ -170,11 +175,11 @@ function onMouseLeave(e){
     let x= e.clientX - rect.left;
     let y= e.clientY - rect.top;
     if (x<0 || x>canvasWidth || y<0 || y>canvasHeight){
-        if(lastClickedFigure!=null){
-            lastClickedFigure.setPosX(lastClickedFigure.getPreviousX());
-            lastClickedFigure.setPosY(lastClickedFigure.getPreviousY());
+        if(lastClickedChip!=null){
+            lastClickedChip.setPosX(lastClickedChip.getPreviousX());
+            lastClickedChip.setPosY(lastClickedChip.getPreviousY());
             isMouseDown = false;
-            lastClickedFigure.setResaltado(false)
+            lastClickedChip.setResaltado(false)
             game.draw();
         }
     }
@@ -186,7 +191,7 @@ function clearCanvas(){
 }
 
 
-function findClickedFigure(x, y){
+function findClickedChip(x, y){
     
     let chips = game.player1.getChips();
     for(let i=chips.length-1; i>=0; i--){

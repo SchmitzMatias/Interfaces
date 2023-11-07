@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=VT323);
+
 *,*::before,*::after{
     margin: 0%;
     box-sizing: border-box;
@@ -857,13 +859,23 @@ div .reset-password {
 
 #game-preview {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: space-evenly;
 }
 
-#game-preview h1 {
+#game-preview h1{
     display: flex;
     justify-content: center;
     margin: 3%;
     color: black;
+}
+
+#game-preview h1, #game-preview h2 {
+    font-family: 'VT323', 'Roboto';
+    font-size: 50px;
+    text-shadow:2px 2px 0 #73ab4c;
 }
 
 .players-selection {
@@ -883,7 +895,6 @@ div.character-selection {
     padding: 2px;
 }
 
-
 .character-container > input {
     position:absolute;
     height: 100px;
@@ -901,25 +912,24 @@ div.character-selection {
 }
 
 input:checked + div.checkbox-img {
-    background-color: #abe44c;
-    /* box-shadow: 2px 2px 2px 1px black; */
+    background-color: rgba(171, 228, 76, 0.9);
 }
-/* 
-input:hover + div.checkbox-img{
-    box-shadow: 0 0 12px green;
-} */
-
 
 .board-selection {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .board-selection select{
-    background-color: DodgerBlue;
-    font-size: 20px;
-    width: 20%;
-    padding: 10px;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    padding: 0.5em 1em;
+    background-color: rgba(87, 198, 213, 0.95);
+    color: var(--blanco);
+    border-radius: 0.25em;
+    border:0;
+    cursor: pointer;
+    font-family: 'VT323', 'Roboto';
+    font-size: 25px;
 }
 
 .play-btn {
@@ -930,9 +940,19 @@ input:hover + div.checkbox-img{
 
 .play-btn button {
     height:50px;
-    width: 100px;
-    background-color: blue;
-    border: none;
+    width: 200px;
+    background-color: rgba(87, 198, 213, 0.95);
+    transition-duration: 0.4s;
+    font-family: 'VT323', 'Roboto';
+    font-size: 40px;
+    border: 2px #FF5345;
+    border-radius: 0.25em;
+}
+
+.play-btn button:hover {
+    background-color: #FF5345;
+    font-size: 35px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .game-content {
@@ -1033,7 +1053,7 @@ input:hover + div.checkbox-img{
 }
 
 #victory-screen {
-    /*background: url('tu-imagen-de-fondo.png'); /* Puedes utilizar una imagen de fondo aquí */
+    font-family: 'VT323', 'Roboto';
     background-color: rgba(79, 94, 117, 0.8); /* primario-l1*/
     border-radius: 20px;
     position: absolute;
@@ -1042,7 +1062,6 @@ input:hover + div.checkbox-img{
     text-align: center;
     padding: 20px;
     color: var(--acento);
-    font-family: 'Press Start 2P', cursive;
 }
 
 #victory-screen h1 {
@@ -1050,13 +1069,23 @@ input:hover + div.checkbox-img{
 }
 
 #victory-screen button {
+    font-family: 'VT323', 'Roboto';
     background-color: var(--secundario-l1); /* Estiliza el botón a tu gusto */
-    color: #ffffff;
+    border-radius: 5px;
+    color: var(--blanco);
     font-size: 18px;
     padding: 10px 20px;
     margin: 10px;
     cursor: pointer;
     border: none;
+}
+
+#players-turn{
+    padding-top: 0.5rem;
+    position: absolute;
+    background-color: transparent;
+    text-align: right;
+    z-index: 0;
 }
 
 #countdown-timer{

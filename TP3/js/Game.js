@@ -17,14 +17,19 @@ class Game {
         this.deal(img1,img2);
 
         // Definir el tiempo inicial (en segundos)
-        this.initialTime = 60; // 5 minutos
+        this.initialTime = 300; // 5 minutos
         this.currentTime = this.initialTime;
 
         // Obtener una referencia al elemento del temporizador
-        this.countdownTimer = document.getElementById("countdown-timer");
+        this.countdownTimer = document.querySelector("#countdown-timer");
+        this.countdownTimer.style.display="block";
         this.countdownTimer.style.left= (this.width+25)+"px";
         // Iniciar el temporizador
         this.startTimer();
+
+        this.playersTurn = document.querySelector("#players-turn");
+        this.playersTurn.style.display="block";
+        this.playersTurn.style.left=(this.width-244)+"px"
     }
 
     deal(img1,img2){
@@ -53,6 +58,7 @@ class Game {
 
     changeTurn(){
         if(this.winner==null){
+            this.playersTurn.style.display="block";
             if(this.currentTurn==this.player1){
                 this.player1.useChip();
                 this.currentTurn= this.player2;
@@ -61,11 +67,8 @@ class Game {
                 this.player2.useChip();
                 this.currentTurn= this.player1;
             }
-        }
-        else{
-            console.log(this.winner);
-        }
-        
+            this.playersTurn.innerHTML="Turno: "+this.currentTurn.getUsername();
+        }       
     }
 
     checkPlay(droppedChip){
@@ -145,6 +148,8 @@ class Game {
     drawWinnerMessage() {
         let victoryDiv = document.querySelector("#victory-screen");
         victoryDiv.style.display="block";
+        let status = document.querySelector("#game-result");
+        status.innerHTML="Ganaste!"
         let winnerP = document.querySelector("#winner");
         winnerP.innerHTML=winnerP.innerHTML+this.winner.getUsername()+"!";
         victoryDiv.style.top=this.height/2+"px";
