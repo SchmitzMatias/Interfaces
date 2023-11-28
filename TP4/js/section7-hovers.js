@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     gwen.onmouseleave = function () {
-        section7.style.backgroundImage = 'url("../images/fondo-blanco-s7.png")';
+        section7.style.backgroundImage = 'url("https://schmitzmatias.github.io/Interfaces/TP4/images/section7-gwen.png")';
         section7.style.minHeight = "720px";
         peter.style.filter = "blur(0px)";
         peter.style.transform = "scale(1)";
