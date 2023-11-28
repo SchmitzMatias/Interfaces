@@ -9,14 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let section7 = document.querySelector(".section7");
 
     gwen.onmouseover = function () {
-        section7.style.backgroundImage = 'url("../images/section7-gwen.png")';
+        setTimeout(function(){
+            section7.style.backgroundImage = 'url("../images/section7-gwen.png")';
         section7.style.minHeight = "840px";
         peter.style.filter = "blur(3px)";
         peter.style.transform = "scale(0.9)";
         miles.style.filter = "blur(3px)";
         miles.style.transform = "scale(0.9)";
         gwen.style.transform = "scale(1.1)";
-
+        }, 100);
     }
 
     gwen.onmouseleave = function () {
