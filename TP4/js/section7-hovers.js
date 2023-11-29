@@ -5,11 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
     let gwen = document.querySelector(".gwens7");
     let peter = document.querySelector(".peters7");
     let miles = document.querySelector(".miless7");
+    let gwenImage = new Image();
+    gwenImage.src = './images/section7-gwen.png';
+
+    let peterImage = new Image();
+    peterImage.src = './images/section7-peter.png';
+
+    let milesImage = new Image();
+    milesImage.src = './images/section7-miles.png';
 
     let section7 = document.querySelector(".section7");
 
     gwen.onmouseover = function () {
-            section7.style.backgroundImage = 'url("images/section7-gwen.png")';
+            section7.style.backgroundImage = 'url('+gwenImage.src+')';
             section7.style.minHeight = "840px";
             peter.style.filter = "blur(3px)";
             peter.style.transform = "scale(0.9)";
@@ -29,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     peter.onmouseover = function () {
-        section7.style.backgroundImage = 'url("images/section7-peter.png")';
+        section7.style.backgroundImage = 'url('+peterImage.src+')';
         section7.style.minHeight = "840px";
         gwen.style.filter = "blur(3px)";
         gwen.style.transform = "scale(0.9)";
@@ -50,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     miles.onmouseover = function () {
-        section7.style.backgroundImage = `url("images/section7-miles.png")`;
+        section7.style.backgroundImage = 'url('+milesImage.src+')';
         section7.style.minHeight = "840px";
         peter.style.filter = "blur(3px)";
         peter.style.transform = "scale(0.9)";
