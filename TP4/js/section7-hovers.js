@@ -9,19 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let section7 = document.querySelector(".section7");
 
     gwen.onmouseover = function () {
-        setTimeout(function(){
-            section7.style.backgroundImage = 'url("../images/section7-gwen.png")';
+        section7.style.backgroundImage = 'url("./images/section7-gwen.png")';
         section7.style.minHeight = "840px";
         peter.style.filter = "blur(3px)";
         peter.style.transform = "scale(0.9)";
         miles.style.filter = "blur(3px)";
         miles.style.transform = "scale(0.9)";
         gwen.style.transform = "scale(1.1)";
-        }, 100);
     }
 
     gwen.onmouseleave = function () {
-        section7.style.backgroundImage = 'url("https://schmitzmatias.github.io/Interfaces/TP4/images/section7-gwen.png")';
+        section7.style.backgroundImage = 'url("./images/section7-gwen.png")';
         section7.style.minHeight = "720px";
         peter.style.filter = "blur(0px)";
         peter.style.transform = "scale(1)";
@@ -31,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     peter.onmouseover = function () {
-        section7.style.backgroundImage = 'url("../images/section7-peter.png")';
+        section7.style.backgroundImage = 'url("./images/section7-peter.png")';
         section7.style.minHeight = "840px";
         gwen.style.filter = "blur(3px)";
         gwen.style.transform = "scale(0.9)";
@@ -42,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     peter.onmouseleave = function () {
-        section7.style.backgroundImage = 'url("../images/fondo-blanco-s7.png")';
+        section7.style.backgroundImage = 'url("./images/fondo-blanco-s7.png")';
         section7.style.minHeight = "720px";
         gwen.style.filter = "blur(0px)";
         gwen.style.transform = "scale(1)";
@@ -52,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     miles.onmouseover = function () {
-        section7.style.backgroundImage = 'url("../images/section7-miles.png")';
+        section7.style.backgroundImage = 'url("./images/section7-miles.png")';
         section7.style.minHeight = "840px";
         peter.style.filter = "blur(3px)";
         peter.style.transform = "scale(0.9)";
@@ -63,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     miles.onmouseleave = function () {
-        section7.style.backgroundImage = 'url("../images/fondo-blanco-s7.png")';
+        section7.style.backgroundImage = 'url("./images/fondo-blanco-s7.png")';
         section7.style.minHeight = "720px";
         peter.style.filter = "blur(0px)";
         peter.style.transform = "scale(1)";
